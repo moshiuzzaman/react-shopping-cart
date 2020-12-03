@@ -10,7 +10,7 @@ function App() {
         product list 
       </main>
       <footer>
-        All rights reserved.
+        All rights reserved by shozon raj
       </footer>
     </div>
   );
