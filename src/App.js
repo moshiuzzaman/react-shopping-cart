@@ -1,17 +1,14 @@
+import Footer from "./Component/Footer/Footer";
+import Header from "./Component/Header/Header";
+import Main from "./Component/Main/Main";
 
 //Feature-1
 function App() {
   return (
     <div className="grid-container">
-      <header >
-        <a href="/">React Shopping Cart</a>
-      </header>
-      <main>
-        product list 
-      </main>
-      <footer>
-        All rights reserved by shozon raj
-      </footer>
+     <Header/>
+      <Main/>
+      <Footer/>
     </div>
   );
 }
