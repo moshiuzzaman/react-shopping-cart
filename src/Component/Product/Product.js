@@ -10,6 +10,7 @@ const Product = () => {
         size: '',
         sort: '',
     })
+    //all
     const filterSort = (e) => {
         const sort = e.target.value
         setData({
