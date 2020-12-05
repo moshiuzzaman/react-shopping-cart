@@ -1,0 +1,10 @@
+
+
+.product img {
+    max-width: 37rem;
+    max-height: 37rem;
+}
+.product a{
+    text-decoration: none;
+    color: black
+}
