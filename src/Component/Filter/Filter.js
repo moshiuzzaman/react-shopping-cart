@@ -1,12 +1,13 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
+import './Filter.css'
 
 const Filter = ({ data, filterSize, filterSort }) => {
   console.log()
   return (
-    <Grid container spacing={3}>
+    <Grid className="product-filter" container spacing={3}>
       <Grid item md={4}>
-        <p m={0}>Total Project {data.products.length}</p>
+        <p className="total_products" m={0}>Total Project {data.products.length}</p>
       </Grid>
       <Grid item md={4}>
         Order
