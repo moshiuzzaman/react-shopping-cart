@@ -1,0 +1,7 @@
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text.button_style {
+    background: #ffd400;
+    padding: 10px 0px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+}

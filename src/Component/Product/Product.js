@@ -1,19 +1,17 @@
 import { Grid } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import { Products } from '../../data';
 import SingleProduct from './SingleProduct';
 import './Product.css'
 import Filter from '../Filter/Filter';
-const Product = () => {
-    const [data, setData] = useState({
-        products: Products,
-        size: '',
-        sort: '',
-    })
+const Product = ({data, setData, AddToCart}) => {
+    
+    
     //all
     const filterSort = (e) => {
         const sort = e.target.value
         setData({
+            ...data,
             sort: sort,
             products: data.products.slice().sort((a, b) =>
                 sort === "Lowest" ? (a.price > b.price) ? 1 : -1
@@ -42,7 +40,7 @@ const Product = () => {
                 {
                     data.products.map(product =>
                         <Grid key={product._id} item md={4}>
-                            <SingleProduct product={product} />
+                            <SingleProduct AddToCart={AddToCart} product={product} />
                         </Grid>
                     )
                 }

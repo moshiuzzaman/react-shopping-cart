@@ -8,3 +8,12 @@
     text-decoration: none;
     color: black
 }
+.MuiCardContent-root {
+    padding: 4px 15px !important;
+    height: 52px;
+}
+p.product_price {
+    font-weight: bold;
+    color: #d1300c;
+    margin: 10px 0 0 11px;
+}

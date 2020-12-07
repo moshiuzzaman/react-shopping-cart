@@ -1,8 +1,8 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 
-const SingleProduct = ({ product }) => {
-    const { image, title, description, availableSizes, price, _id } = product;
+const SingleProduct = ({ product, AddToCart }) => {
+    const { image, title, price, _id } = product;
     return (
         <Card className="product">
             <CardActionArea>
@@ -19,12 +19,14 @@ const SingleProduct = ({ product }) => {
             </CardActionArea>
             <CardActions>
                 <Grid container spacing={3}>
-                    <Grid item md={6}>
-                        {`$` + price}
+                    <Grid item md={5}>
+                        <p className="product_price">
+                            {`$` + price}
+                        </p>
                     </Grid>
-                    <Grid item md={6}>
-                        <Button variant="contained" color="primary">
-                            Primary
+                    <Grid item md={7}>
+                        <Button onClick={() => AddToCart(product)} className="button_style">
+                            Add to cart
                         </Button>
                     </Grid>
                 </Grid>
