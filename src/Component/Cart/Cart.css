@@ -3,19 +3,21 @@
 }
 h5.cart_title {
     margin: 0;
-    font-size: 21px;
+    font-size: 15px;
+    font-weight: normal;
 }
 p.cart_price {
-    margin: 5px;
+    margin: 9px 0 0 0;
+    font-size: 15px;
 }
-.cart_price_button{
-    margin-top: 25px;
+.cart_price_button {
+    margin-top: 15px;
 }
 .cart_details {
     margin-left: 15px;
 }
 
-h2.total_price {
+.total_price {
     margin: 9px 4px;
     color: #b81f1f;
 }
@@ -25,4 +27,44 @@ p.cart_headding {
     font-weight: bold;
     border-bottom: 1px solid;
     padding: 0 0 16px 0;
+}
+
+form.checkout-form{
+    margin-top:50px
+}
+
+   form.checkout-form input {
+    display: block;
+    width: 89%;
+    border: 1px solid rgb(56, 52, 52);
+    padding: 10px 15px;
+    margin-bottom: 20px;
+   }
+  
+
+ form.checkout-form  input[type="submit"] {
+    background: #ffd400;
+    padding: 14px 0px;
+    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 16px;
+    letter-spacing: 10px;
+    border:none;
+  }
+  
+
+  form.checkout-form input[type="submit"]:hover {
+    background: #f1db6b;
+  }
+  
+
+  
+  form.checkout-form input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+  form.checkout-form input:focus {
+    outline: 2px solid red;
+   
 }
