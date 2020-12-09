@@ -1,17 +1,19 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
+import ProductModel from './ProductModel';
 
 const SingleProduct = ({ product, AddToCart }) => {
     const { image, title, price, _id } = product;
+    const [open, setOpen] =useState(false)
     return (
         <Card className="product">
             <CardActionArea>
-                <a href={"#" + _id}>
+                <a href={"#" + _id} onClick={() =>setOpen(!open)}>
                     <img src={image} alt={title} />
                 </a>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        <a href={"#" + _id}>
+                        <a href={"#" + _id} onClick={() =>setOpen(!open)}>
                             {title}
                         </a>
                     </Typography>
@@ -31,6 +33,7 @@ const SingleProduct = ({ product, AddToCart }) => {
                     </Grid>
                 </Grid>
             </CardActions>
+            <ProductModel AddToCart={AddToCart} product={product}  open={open} setOpen={setOpen}/>
         </Card>
     );
 };

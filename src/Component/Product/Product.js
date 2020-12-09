@@ -3,6 +3,7 @@ import React from 'react';
 import { Products } from '../../data';
 import SingleProduct from './SingleProduct';
 import './Product.css'
+import Fade from 'react-reveal/Fade';
 import Filter from '../Filter/Filter';
 const Product = ({data, setData, AddToCart}) => {
     
@@ -22,7 +23,7 @@ const Product = ({data, setData, AddToCart}) => {
 
     }
     const filterSize = (e) => {
-        e.target.value === "" ? setData({ size: "", products: Products }) :
+        e.target.value === "" ? setData({...data, size: "", products: Products }) :
 
             setData({
                 ...data,
@@ -36,7 +37,8 @@ const Product = ({data, setData, AddToCart}) => {
         <>
 
             <Filter filterSize={filterSize} filterSort={filterSort} data={data} />
-            <Grid container spacing={3}>
+            <Fade up>
+                <Grid container spacing={3}>
                 {
                     data.products.map(product =>
                         <Grid key={product._id} item md={4}>
@@ -46,6 +48,8 @@ const Product = ({data, setData, AddToCart}) => {
                 }
 
             </Grid>
+            </Fade>
+            
         </>
     );
 };
