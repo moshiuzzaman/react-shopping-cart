@@ -17,3 +17,9 @@ p.product_price {
     color: #d1300c;
     margin: 10px 0 0 11px;
 }
+
+
+/* model style */
+img.product_model_image {
+    height: 78vh;
+}
