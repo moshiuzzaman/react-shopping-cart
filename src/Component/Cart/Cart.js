@@ -4,22 +4,22 @@ import './Cart.css'
 import CheckIcon from '@material-ui/icons/Check';
 import { useForm } from 'react-hook-form';
 import Fade from 'react-reveal/Fade';
+import { removeFromCART } from '../../Redux/Action/CartAction';
+import { connect } from 'react-redux';
+import CartModel from './CartModel';
 
-const Cart = ({ data, removeFromCart, setData }) => {
-    const cartItems = data.cartItems
+const Cart = ({ cartItems, removeFromCART }) => {
+    const [userData,setUserData] =useState('')
     const [checkOutBox, setCheckOutBox] = useState(false)
     const orderProcced = () => {
         setCheckOutBox(!checkOutBox);
-        console.log('object')
     }
     const [open, setOpen] =useState(false)
     const { register, handleSubmit } = useForm();
     const onSubmit = d => {
+        setUserData(d)
         setOpen(!open)
-        setData({ ...data, cartItems: [] })
-        console.log(d)
-        
-        localStorage.setItem("cartItems", [])
+        // localStorage.setItem("cartItems", [])
     }
 
     
@@ -27,14 +27,16 @@ const Cart = ({ data, removeFromCart, setData }) => {
     return (
         <div>
             {
-                data.cartItems.length === 0 ? <p className="cart_headding">Cart is empty</p> :
+                cartItems.length === 0 ? <p className="cart_headding">Cart is empty</p> :
                     <p className="cart_headding">Total number of items {cartItems.length}</p>
             }
             <div className="cart_items">
                 {
                     cartItems.map(ci => <Box border={1} borderColor="grey.400" key={ci._id} m={1} p={1}>
-                        <Fade left>
-                            <Grid container >
+                        <Fade left className="cartItems">
+                            
+                            <Grid container  className="cartItems">
+                            
                                 <Grid item md={2}>
                                     <img src={ci.image} alt="" className="cart_item_img" />
                                 </Grid>
@@ -47,7 +49,7 @@ const Cart = ({ data, removeFromCart, setData }) => {
                                             </Grid>
 
                                             <Grid item md={5}>
-                                                <Button onClick={() => removeFromCart(ci._id)} variant="contained" color="secondary"> Remove</Button>
+                                                <button className="remove_from_cart" onClick={() => removeFromCART(ci._id)} variant="contained" color="secondary"> X</button>
                                             </Grid>
 
                                         </Grid>
@@ -90,7 +92,7 @@ const Cart = ({ data, removeFromCart, setData }) => {
                     {
                         !checkOutBox && <Grid container>
                             <Grid item md={7}>
-                                <h3 className="total_price">Total $ {(cartItems.reduce((a, c) => a + c.price * c.count, 0)).toFixed(2)}</h3>
+                                <h3 className="total_price">Total ${(cartItems.reduce((a, c) => a + c.price * c.count, 0)).toFixed(2)}</h3>
                             </Grid>
 
                             <Grid item md={5}>
@@ -107,20 +109,18 @@ const Cart = ({ data, removeFromCart, setData }) => {
 
                 </Box>
             }
-            <button  onClick={()=>setOpen(!open)}>sakdfhifh</button>
-            <Modal className="model"
-                open={open}
-                onClose={()=>setOpen(!open)}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                <div className="model_div">
-                    alj 
-                </div>
-            </Modal>
+            
+           <CartModel userData={userData} open={open} setOpen={setOpen} cartItems={cartItems}/>
 
         </div>
     );
 };
 
-export default Cart;
+const mapStateToProps = (state)=>{
+   return {cartItems:state.cartItems}  
+}
+const mapDispatchToProps ={
+    removeFromCART:removeFromCART
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cart);

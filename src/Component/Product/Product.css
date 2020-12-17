@@ -23,3 +23,15 @@ p.product_price {
 img.product_model_image {
     height: 78vh;
 }
+ul.product-size li {
+    list-style: none;
+    float: left;
+    background: #a7a7a7;
+    padding: 10px 14px;
+    margin: 0px 5px;
+    color: #fee323;
+}
+h4.product-size-title {
+    float: left;
+    margin: 11px 20px 2px 0;
+}

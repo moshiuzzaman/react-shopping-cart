@@ -1,13 +1,14 @@
 import { Box, Button, Grid, Modal } from '@material-ui/core';
 import React from 'react';
 
-const ProductModel = ({ open, setOpen, AddToCart, product }) => {
-    const { image, title, availableSizes, description, price, _id } = product;
-    const buttonClickHandeler=()=>{
-        AddToCart(product)
+const ProductModel = ({ open, setOpen, addToCART, product }) => {
+    const { image, title, availableSizes, description, price, } = product;
+    const buttonClickHandeler = () => {
+        addToCART(product)
         setOpen(!open)
     }
     return (
+
         <Modal className="model"
             open={open}
             onClose={() => setOpen(!open)}
@@ -15,6 +16,7 @@ const ProductModel = ({ open, setOpen, AddToCart, product }) => {
             aria-describedby="simple-modal-description"
         >
             <div className="model_div">
+                <button onClick={() =>setOpen(!open)} className="model_close_btn">X</button>
                 <Box m={3}>
                     <Grid container spacing={3}>
                         <Grid item md={5}>
@@ -23,9 +25,15 @@ const ProductModel = ({ open, setOpen, AddToCart, product }) => {
                         <Grid item md={7}>
                             <h1>{title}</h1>
                             <p>{description}</p>
-                            {
-                                availableSizes.map((as, index) => <li key={index}>{as}</li>)
-                            }
+                            <div className="mb-5">
+                                <h4 className="product-size-title">Size :</h4>
+                                <ul className="product-size  " >
+
+                                    {
+                                        availableSizes.map((as, index) => <li key={index}>{as}</li>)
+                                    }
+                                </ul>
+                            </div>
                             <Grid container spacing={3}>
                                 <Grid item md={5}>
                                     <p className="product_price">
@@ -44,6 +52,8 @@ const ProductModel = ({ open, setOpen, AddToCart, product }) => {
                 </Box>
             </div>
         </Modal>
+
+
     );
 };
 

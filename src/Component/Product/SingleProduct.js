@@ -1,8 +1,10 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { addToCART } from '../../Redux/Action/CartAction';
 import ProductModel from './ProductModel';
 
-const SingleProduct = ({ product, AddToCart }) => {
+const SingleProduct = ({ product, addToCART }) => {
     const { image, title, price, _id } = product;
     const [open, setOpen] =useState(false)
     return (
@@ -27,15 +29,25 @@ const SingleProduct = ({ product, AddToCart }) => {
                         </p>
                     </Grid>
                     <Grid item md={7}>
-                        <Button onClick={() => AddToCart(product)} className="button_style">
+                        <Button onClick={() => addToCART(product)} className="button_style">
                             Add to cart
                         </Button>
                     </Grid>
                 </Grid>
             </CardActions>
-            <ProductModel AddToCart={AddToCart} product={product}  open={open} setOpen={setOpen}/>
+            <ProductModel addToCART={addToCART} product={product}  open={open} setOpen={setOpen}/>
         </Card>
     );
 };
 
-export default SingleProduct;
+const mapStateToProps=state =>{
+    return {
+        cart:state.cart
+    }
+}
+
+const mapDispatchToProps ={
+    addToCART: addToCART
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SingleProduct);

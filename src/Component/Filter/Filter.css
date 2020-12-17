@@ -16,3 +16,9 @@ select{
     padding: 0 0 3px 0;
     margin-bottom: 20px;
 }
+select {
+    margin-left: 10px;
+    padding: 2px 30px;
+    color: #f50057;
+    border-color: #f50057;
+}
